@@ -16,53 +16,44 @@ console.log("Вырожение 1000 + '108' = "+answer3 + "\nт.к. 1000 чис
 
 //Lesson 3
 
-/* let i = 0;
-while(i <= 100){
-    console.log(i++);
-    i++;
-}
- */
-const basket = document.querySelector('.basket__content')
-document.querySelector('.repeatBasket').onclick = () =>{
-    basket.textContent = ''
-    basketRepeat()
-};
+//Функция возврата простых чисел от 0 до 100
+ console.log('Задача вывода простых чисел от 0 до 100')
+let maxNum = 100,
+    num = 0
 
-function basketRepeat(){
-    let arrProduct = [],
-        cost = 0
-
-    for(i=0; i<randomInteger(1, 10); i++){
-        arrProduct[i] = newProduct(`Product#${i+1}`, randomInteger(50, 400))
-        addCard(arrProduct[i])
-        cost += arrProduct[i].price
+numbr: while(num <= maxNum){
+    //Простое число должно быть больше 1
+    if((num < 1) || (num === 1)) {
+        num++ 
+        continue numbr
     }
-
-    document.querySelector('.quantit').innerHTML = arrProduct.length
-    document.querySelector('.cost').innerHTML = cost
-
-    console.log(`Обший массив товаров:\n${writeArr(arrProduct)}\nОбщая стоимость всех товаров:${cost}`);
-
+   //Числа на деление 
+    for(i = 2; i < num; i++ ){
+        if(num % i == 0) {
+            num++
+            continue numbr
+        }
+    }
+    //Число является простым
+    console.log(num);
+    num++
 }
 
-function writeArr(arr){
-    let str = ""
-    for(i=0; i<arr.length; i++) str += `Name: ${arr[i].name} Price: ${arr[i].price} \n`
-    return str
-}
+//Определяем массив товаров в корзине
+console.log('Задача подсчитать общую стоимость товаров в корзине')
+let arrProduct = [
+        ["Продукт 1", 300],
+        ["Продукт 2", 100],
+        ["Продукт 3", 140],
+        ["Продукт 4", 60],
+        ["Продукт 5", 225],
+        ["Продукт 6", 80],
+        ["Продукт 7", 15]
+    ],
+    price = 0
 
-function addCard(obj){
-    let html = `<div class="basket__item">
-                    <h3 class="basket__title">${obj.name}</h3>
-                    <div class="basket__price">${obj.price}</div>
-                </div>`
-    basket.innerHTML += html
+for(let product of arrProduct){
+    price += product[1]
 }
+console.log(`Общая стоимость товаров в корзине: \n ${price}`)
 
-function newProduct(name, price){
-    return {"name":name, "price":price}
-}
-
-function randomInteger(min, max) {
-    return Math.round(min - 0.5 + Math.random() * (max - min + 1))
-}
