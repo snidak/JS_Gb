@@ -1,0 +1,38 @@
+.basket{
+    
+    width:1070px;
+    margin: 0 auto;
+    
+   
+}
+.basket__content{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.basket__item{
+    width:24%;
+    padding: 20px;
+    margin-right: 30px;
+    background-color: #222222;
+    border: 1px solid #d1d1d1;
+    margin: 15px 0.5%
+}
+.basket__title{
+    color: #ffffff;
+    margin: 0;
+    margin-bottom: 15px;
+}
+.basket__price{
+    font-weight: bold;
+    color: #ffffff;
+}
+.basket__price::before{
+    content: "$";
+}
+.basket__general{
+    width:100%;
+}
+.cost::before{
+    content: "$";
+}
